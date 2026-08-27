@@ -1,0 +1,22 @@
+// Core Revenue Metric
+Total Net Sales = 
+CALCULATE(
+    SUMX(fact_sales, fact_sales[Quantity] * fact_sales[UnitPrice] * (1 - fact_sales[DiscountPct])),
+    fact_sales[DeliveryStatus] = "Delivered"
+)
+
+// Order Volume
+Total Orders = 
+DISTINCTCOUNT(fact_sales[OrderID])
+
+// Average Order Value
+Average Order Value = 
+DIVIDE([Total Net Sales], [Total Orders], 0)
+
+// Prior Month Sales (Time Intelligence)
+Sales Prior Month = 
+CALCULATE([Total Net Sales], DATEADD(dim_date[Date], -1, MONTH))
+
+// Month-over-Month Growth %
+MoM Sales Growth % = 
+DIVIDE([Total Net Sales] - [Sales Prior Month], [Sales Prior Month], 0)
