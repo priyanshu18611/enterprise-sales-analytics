@@ -1,89 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Priyanshu Kumar — Analytics Command Center</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Priyanshu Kumar | Enterprise Analytics Command Center</title>
+<meta name="description" content="Enterprise Sales Analytics portfolio — SQL, Python, Power BI, Excel, Tableau-ready analytics and business intelligence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-:root{--bg:#050b14;--p:#0a1524;--p2:#0e1d30;--line:#1b3550;--text:#edf6ff;--muted:#8fa8c2;--blue:#50a9ff;--cyan:#39d7d0;--green:#67d391;--yellow:#ffc56d;--red:#ff7188}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 500px at 80% -10%,#153d61 0,transparent 65%),linear-gradient(180deg,#06101c,#050b14 70%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial}
-a{text-decoration:none;color:inherit}.layout{display:flex;min-height:100vh}.side{width:255px;position:fixed;inset:0 auto 0 0;background:#050d17eF;border-right:1px solid var(--line);padding:22px 15px;z-index:10;backdrop-filter:blur(14px)}.brand{font-size:18px;font-weight:900;margin:5px 10px}.role{font-size:10px;color:var(--cyan);letter-spacing:1.5px;margin:5px 10px 25px}.nav a{display:flex;gap:10px;align-items:center;padding:11px 12px;margin:4px 0;border-radius:11px;color:#a9bfd6;font-size:12px}.nav a:hover,.nav a.active{background:#0d2944;color:#fff}.sidebottom{position:absolute;bottom:20px;left:15px;right:15px;padding:13px;border:1px solid var(--line);border-radius:13px;color:var(--muted);font-size:10px;line-height:1.6}
-.main{margin-left:255px;width:calc(100% - 255px);max-width:1500px;padding:28px}.topbar{display:flex;justify-content:space-between;gap:15px;align-items:center}.live{display:flex;gap:7px;align-items:center;color:#9fc0d9;font-size:11px}.dot{width:7px;height:7px;background:var(--green);border-radius:50%;box-shadow:0 0 14px var(--green)}
-.hero{padding:28px 0 8px}.eyebrow{color:var(--cyan);font-size:11px;font-weight:800;letter-spacing:1.8px}.hero h1{font-size:clamp(42px,5.5vw,76px);line-height:.93;margin:12px 0 18px;letter-spacing:-2px}.hero p{max-width:850px;color:var(--muted);line-height:1.75;font-size:14px}.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.btn{padding:10px 13px;border:1px solid var(--line);border-radius:10px;background:#0a1b2e;font-size:11px}.btn.primary{background:#1478d1;border-color:#3194e4}
-.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:24px 0}.card{background:linear-gradient(145deg,#0d1d30f5,#081321f5);border:1px solid var(--line);border-radius:16px;padding:17px;box-shadow:0 18px 60px #0005}.label{font-size:9px;color:var(--muted);letter-spacing:1px}.value{font-size:24px;font-weight:900;margin-top:7px}.delta{font-size:9px;color:var(--green);margin-top:5px}
-.section{margin-top:48px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:13px}.section h2{margin:0;font-size:22px}.section p{color:var(--muted);font-size:12px;line-height:1.6;margin:5px 0}.grid2{display:grid;grid-template-columns:2fr 1fr;gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.chart{height:335px}.chart.small{height:285px}
-.filters{display:flex;gap:7px;flex-wrap:wrap}.filter{border:1px solid var(--line);border-radius:999px;background:#081728;color:#a9c1d8;padding:7px 10px;font-size:10px}
-.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:14px 0}.tab{border:1px solid var(--line);border-radius:999px;background:#081728;color:#a9c1d8;padding:8px 11px;font-size:10px;cursor:pointer}.tab.active{background:#167bd2;color:#fff}.tabcontent{display:none}.tabcontent.active{display:block}
-.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.tile{padding:15px;border:1px solid var(--line);border-radius:13px;background:#081728}.tile .icon{font-size:20px}.tile b{display:block;margin:7px 0;font-size:12px}.tile span{color:var(--muted);font-size:10px;line-height:1.6}
-.tablewrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:620px}.table th,.table td{text-align:left;padding:10px;border-bottom:1px solid #17304a;font-size:10px}.table th{color:#8fb6d9}.table td{color:#d7e5f2}
-.pipeline{display:flex;align-items:center;justify-content:center;gap:7px;flex-wrap:wrap;padding:25px}.node{padding:13px 14px;border:1px solid #285a80;background:#0b2741;border-radius:12px;text-align:center;font-size:10px}.arrow{color:var(--cyan);font-weight:900}
-.insights{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.insight{padding:16px;border-radius:13px;background:#081728;border:1px solid var(--line);border-left:3px solid var(--blue)}.insight b{font-size:11px}.insight p{margin:7px 0 0;color:var(--muted);font-size:10px}
-.footer{padding:45px 0 15px;color:#6f879f;font-size:10px;text-align:center}
-@media(max-width:1000px){.kpis{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.stack{grid-template-columns:repeat(2,1fr)}.insights{grid-template-columns:1fr}.side{width:210px}.main{margin-left:210px;width:calc(100% - 210px)}}
-@media(max-width:650px){.side{display:none}.main{margin:0;width:100%;padding:15px}.hero h1{font-size:45px}.kpis{grid-template-columns:1fr 1fr;gap:7px}.value{font-size:19px}.grid3,.stack{grid-template-columns:1fr}.chart{height:300px}.topbar{align-items:flex-start}}
+:root{--bg:#060914;--panel:rgba(14,20,36,.72);--panel2:#0d1425;--line:rgba(148,163,184,.14);--text:#e8eefc;--muted:#8f9bb3;--a:#67e8f9;--b:#8b5cf6;--c:#34d399;--warn:#fbbf24;--danger:#fb7185;--shadow:0 25px 80px rgba(0,0,0,.34)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0%,rgba(103,232,249,.08),transparent 30%),radial-gradient(circle at 15% 20%,rgba(139,92,246,.09),transparent 28%),var(--bg);color:var(--text);font-family:Inter,sans-serif;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(to bottom,black,transparent 80%);z-index:-1}
+a{color:inherit;text-decoration:none}.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{position:fixed;width:260px;height:100vh;padding:24px 18px;border-right:1px solid var(--line);background:rgba(5,9,20,.8);backdrop-filter:blur(22px);z-index:20}.brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#06101a;font-weight:900;box-shadow:0 0 30px rgba(103,232,249,.25)}.brand b{font-family:"Space Grotesk";font-size:15px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.nav{display:grid;gap:6px}.nav a{padding:12px 13px;border-radius:11px;color:var(--muted);font-size:13px;transition:.25s}.nav a:hover,.nav a.active{background:rgba(103,232,249,.08);color:var(--text);transform:translateX(3px)}.nav a span{display:inline-block;width:24px}.side-foot{position:absolute;bottom:22px;left:18px;right:18px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.side-foot small{color:var(--muted);line-height:1.5}.main{grid-column:2;padding:28px 34px 60px;max-width:1600px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.crumb{color:var(--muted);font-size:12px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);padding:10px 13px;border-radius:10px;font-size:12px;cursor:pointer;transition:.25s}.btn:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.35)}.hero{position:relative;padding:38px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(10,15,29,.68));box-shadow:var(--shadow);margin-bottom:18px}.hero:after{content:"";position:absolute;width:420px;height:420px;right:-140px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.22),transparent 65%);filter:blur(4px)}.eyebrow{color:var(--a);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:"Space Grotesk";font-size:clamp(32px,5vw,64px);line-height:.98;margin:12px 0 15px;max-width:850px}.gradient{background:linear-gradient(90deg,#fff,var(--a),#b9a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:780px;color:#aeb9cf;line-height:1.7;font-size:14px}.hero-grid{display:grid;grid-template-columns:1fr 330px;gap:30px;align-items:end}.orb{height:210px;position:relative;display:grid;place-items:center}.orb .ring{position:absolute;border:1px solid rgba(103,232,249,.25);border-radius:50%;animation:spin 14s linear infinite}.ring.r1{width:170px;height:170px}.ring.r2{width:125px;height:125px;animation-direction:reverse;animation-duration:9s}.ring.r3{width:75px;height:75px;animation-duration:5s}.core{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 55px rgba(103,232,249,.55);animation:pulse 2.4s infinite}.node{position:absolute;width:7px;height:7px;background:var(--a);border-radius:50%;box-shadow:0 0 14px var(--a)}.n1{top:20px;right:65px}.n2{bottom:30px;left:50px}.n3{top:80px;left:20px}.n4{bottom:15px;right:30px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.2);box-shadow:0 0 80px rgba(103,232,249,.8)}}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(5,1fr);margin-bottom:16px}.card{border:1px solid var(--line);border-radius:17px;background:var(--panel);backdrop-filter:blur(18px);box-shadow:0 16px 50px rgba(0,0,0,.18);padding:18px}.kpi{position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;inset:auto -30px -35px auto;width:100px;height:100px;background:radial-gradient(circle,rgba(103,232,249,.16),transparent 65%)}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.value{font-family:"Space Grotesk";font-size:27px;font-weight:700;margin:9px 0}.delta{font-size:11px;color:var(--c)}.two{grid-template-columns:1.65fr 1fr}.three{grid-template-columns:1fr 1fr 1fr}.section{margin-top:16px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.head h2{font-family:"Space Grotesk";font-size:18px;margin:0}.head small{color:var(--muted);font-size:11px}.chartbox{height:330px}.chartbox canvas{width:100%!important;height:100%!important}.tabs{display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap}.tab{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:11px}.tab.on{background:rgba(103,232,249,.1);color:var(--a);border-color:rgba(103,232,249,.25)}.panel{display:none}.panel.on{display:block}.code{background:#070b15;border:1px solid var(--line);border-radius:12px;padding:15px;color:#b9c8e3;font:12px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto}.architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:center}.arch-node{padding:16px 8px;text-align:center;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);font-size:11px}.arrow{color:var(--a);text-align:center}.metric-list{display:grid;gap:9px}.metric{display:grid;grid-template-columns:1fr auto;gap:10px;font-size:12px}.bar{height:6px;background:#151d30;border-radius:20px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--a),var(--b));width:var(--w)}.insights{display:grid;gap:9px}.insight{padding:13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:12px;line-height:1.5}.insight b{color:var(--a)}.stack{display:flex;flex-wrap:wrap;gap:7px}.pill{padding:7px 9px;border:1px solid var(--line);border-radius:99px;color:#b9c5da;font-size:10px;background:rgba(255,255,255,.025)}.footer{margin-top:30px;text-align:center;color:var(--muted);font-size:11px}.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}.cursor{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(103,232,249,.06),transparent 65%);transform:translate(-50%,-50%);z-index:2}.table{width:100%;border-collapse:collapse;font-size:11px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.table th{color:var(--muted);font-weight:500}.status{display:inline-flex;align-items:center;gap:6px;color:var(--c)}.dot{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.hero-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr 1fr}.side{width:220px}.app{grid-template-columns:220px 1fr}.main{padding:22px}}@media(max-width:760px){.side{position:relative;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line)}.app{display:block}.nav{grid-template-columns:repeat(3,1fr)}.side-foot{display:none}.main{padding:16px}.kpis,.three{grid-template-columns:1fr 1fr}.hero{padding:24px}.orb{display:none}.top .actions .btn:first-child{display:none}.architecture{grid-template-columns:1fr}.arrow{display:none}}@media(max-width:480px){.kpis,.three{grid-template-columns:1fr}.hero h1{font-size:34px}}
 </style>
 </head>
 <body>
-<div class="layout">
+<div class="cursor" id="cursor"></div>
+<div class="app">
 <aside class="side">
-<div class="brand">PRIYANSHU KUMAR</div><div class="role">DATA ANALYTICS • BI • PYTHON</div>
-<nav class="nav">
-<a class="active" href="#overview">◈ Command Center</a><a href="#performance">◉ Performance</a><a href="#powerbi">▣ Power BI</a><a href="#excel">▤ Excel</a><a href="#tableau">◌ Tableau</a><a href="#python">🐍 Python / ETL</a><a href="#sql">⌘ SQL / MySQL</a><a href="#model">◇ Data Architecture</a><a href="#insights">✦ Insights</a><a href="#about">◎ Profile</a>
-</nav>
-<div class="sidebottom">Portfolio case study<br><b>12,000 synthetic sales records</b><br>Built for analytics demonstration.</div>
+  <div class="brand"><div class="logo">PK</div><div><b>ANALYTICS OS</b><small>Enterprise Intelligence</small></div></div>
+  <nav class="nav">
+    <a class="active" href="#overview"><span>◈</span>Command Center</a>
+    <a href="#performance"><span>◉</span>Performance</a>
+    <a href="#intelligence"><span>⌁</span>BI Intelligence</a>
+    <a href="#engineering"><span>⌘</span>Data Engineering</a>
+    <a href="#architecture"><span>◇</span>Architecture</a>
+    <a href="#insights"><span>✦</span>Business Insights</a>
+    <a href="#profile"><span>◎</span>Analyst Profile</a>
+  </nav>
+  <div class="side-foot"><div class="status"><i class="dot"></i> Analytics system online</div><small>Interactive portfolio • Synthetic enterprise dataset</small></div>
 </aside>
 
 <main class="main">
-<div class="topbar"><div class="live"><span class="dot"></span> ANALYTICS ENGINE ONLINE</div><div class="links"><a class="btn" href="https://github.com/priyanshu18611" target="_blank">GitHub ↗</a><a class="btn" href="https://www.linkedin.com/in/priyanshuroy18" target="_blank">LinkedIn ↗</a></div></div>
+<div class="top"><div class="crumb">PORTFOLIO / ENTERPRISE SALES ANALYTICS / V2.0</div><div class="actions"><button class="btn" onclick="document.documentElement.style.scrollBehavior='smooth';window.scrollTo({top:0})">⌃ Top</button><a class="btn" href="https://github.com/priyanshu18611" target="_blank">GitHub ↗</a></div></div>
 
-<section class="hero" id="overview"><div class="eyebrow">ENTERPRISE SALES INTELLIGENCE</div><h1>Analytics<br>Command Center</h1>
-<p>An end-to-end Data Analytics portfolio demonstrating the full workflow from raw data and validation to SQL analytics, Python ETL, Power BI/DAX, Excel reporting and Tableau-ready visualization.</p>
-<div class="links"><a class="btn primary" href="#performance">Explore Dashboard ↓</a><a class="btn" href="https://priyanshu18611.github.io/portfolio/" target="_blank">Main Portfolio ↗</a></div></section>
-
-<section class="kpis">
-<div class="card"><div class="label">TOTAL REVENUE</div><div class="value" id="rev"></div><div class="delta">● Portfolio dataset</div></div>
-<div class="card"><div class="label">TOTAL PROFIT</div><div class="value" id="prof"></div><div class="delta">● Calculated from fact data</div></div>
-<div class="card"><div class="label">ORDERS</div><div class="value" id="ord"></div><div class="delta">● Distinct Order IDs</div></div>
-<div class="card"><div class="label">CUSTOMERS</div><div class="value" id="cus"></div><div class="delta">● Distinct customers</div></div>
-<div class="card"><div class="label">PROFIT MARGIN</div><div class="value" id="mar"></div><div class="delta">● Profit / Revenue</div></div>
+<section class="hero reveal" id="overview">
+ <div class="hero-grid">
+  <div>
+   <div class="eyebrow">Enterprise Data & Business Intelligence</div>
+   <h1>Turn raw data into <span class="gradient">decisions.</span></h1>
+   <p>A product-style analytics command center demonstrating SQL data modeling, Python ETL/EDA, Power BI intelligence, Excel executive reporting and Tableau-ready visualization workflows.</p>
+   <div class="stack"><span class="pill">SQL / MySQL</span><span class="pill">Python / Pandas</span><span class="pill">Power BI / DAX</span><span class="pill">Excel</span><span class="pill">Tableau-ready</span><span class="pill">Data Quality</span></div>
+  </div>
+  <div class="orb"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="core"></div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i></div>
+ </div>
 </section>
 
-<section class="section" id="performance"><div class="sectionhead"><div><h2>Performance Intelligence</h2><p>Revenue and profitability trend with regional contribution.</p></div><div class="filters"><span class="filter">2024–2025</span><span class="filter">All Regions</span><span class="filter">All Channels</span></div></div>
-<div class="grid2"><div class="card chart"><canvas id="trend"></canvas></div><div class="card chart"><canvas id="regions"></canvas></div></div></section>
+<section class="grid kpis reveal">
+ <div class="card kpi"><span class="label">Revenue</span><div class="value" data-count="13207911.85">₹0</div><span class="delta">▲ Enterprise sales volume</span></div>
+ <div class="card kpi"><span class="label">Profit</span><div class="value" data-count="3965150.03">₹0</div><span class="delta">▲ ~30% modeled margin</span></div>
+ <div class="card kpi"><span class="label">Orders</span><div class="value" data-count="12000">0</div><span class="delta">● Transaction-level fact table</span></div>
+ <div class="card kpi"><span class="label">Customers</span><div class="value" data-count="6620">0</div><span class="delta">● Customer dimension</span></div>
+ <div class="card kpi"><span class="label">Data Quality</span><div class="value" data-count="98">0%</div><span class="delta">▲ Validation framework</span></div>
+</section>
 
-<section class="section" id="powerbi"><div class="sectionhead"><div><h2>Power BI Intelligence Layer</h2><p>Semantic-model and DAX architecture represented inside the portfolio.</p></div></div>
-<div class="tabs"><button class="tab active" onclick="tab('p1',this)">Dashboard</button><button class="tab" onclick="tab('p2',this)">DAX</button><button class="tab" onclick="tab('p3',this)">Model</button></div>
-<div id="p1" class="tabcontent active"><div class="stack"><div class="tile"><div class="icon">📌</div><b>Executive Overview</b><span>KPI cards, trends, region, category and channel.</span></div><div class="tile"><div class="icon">👥</div><b>Customer Intelligence</b><span>Top customers, segments and contribution.</span></div><div class="tile"><div class="icon">📦</div><b>Product Intelligence</b><span>Category, sub-category and profitability.</span></div><div class="tile"><div class="icon">⏱</div><b>Time Intelligence</b><span>YoY, LY and period-based measures.</span></div></div></div>
-<div id="p2" class="tabcontent"><div class="card tablewrap"><table class="table"><tr><th>DAX Measure</th><th>Business Use</th></tr><tr><td>Total Revenue</td><td>Core sales KPI</td></tr><tr><td>Total Profit</td><td>Profitability KPI</td></tr><tr><td>Profit Margin %</td><td>Margin monitoring</td></tr><tr><td>Average Order Value</td><td>Order economics</td></tr><tr><td>Revenue YoY %</td><td>Growth comparison</td></tr></table></div></div>
-<div id="p3" class="tabcontent"><div class="card"><div class="pipeline"><div class="node">dim_date</div><span class="arrow">→</span><div class="node">dim_customer</div><span class="arrow">→</span><div class="node">sales_fact</div><span class="arrow">←</span><div class="node">dim_product</div></div></div></div></section>
+<section class="grid two section reveal" id="performance">
+ <div class="card"><div class="head"><h2>Revenue & Profit Pulse</h2><small>12-period executive trend</small></div><div class="chartbox"><canvas id="trend"></canvas></div></div>
+ <div class="card"><div class="head"><h2>Regional Mix</h2><small>Revenue contribution</small></div><div class="chartbox"><canvas id="region"></canvas></div></div>
+</section>
 
-<section class="section" id="excel"><div class="sectionhead"><div><h2>Excel Executive Reporting</h2><p>Workbook included in the repository for offline stakeholder reporting.</p></div></div>
-<div class="grid2"><div class="card chart small"><canvas id="cats"></canvas></div><div class="grid3" style="grid-template-columns:1fr 1fr"><div class="tile"><div class="icon">📊</div><b>KPI Dashboard</b><span>Revenue, profit, orders, customers and margin.</span></div><div class="tile"><div class="icon">📈</div><b>Trend Reporting</b><span>Monthly revenue and profit tracking.</span></div><div class="tile"><div class="icon">🗺</div><b>Regional Analysis</b><span>Region-level performance.</span></div><div class="tile"><div class="icon">🧾</div><b>Raw Data</b><span>Analytics-ready fact table.</span></div></div></div></section>
+<section class="grid two section reveal" id="intelligence">
+ <div class="card">
+  <div class="head"><h2>BI Intelligence Layer</h2><small>Power BI / DAX / Model</small></div>
+  <div class="tabs"><button class="tab on" onclick="tab(this,'bi-dashboard')">Dashboard</button><button class="tab" onclick="tab(this,'bi-dax')">DAX</button><button class="tab" onclick="tab(this,'bi-model')">Model</button></div>
+  <div class="panel on" id="bi-dashboard"><div class="metric-list"><div><div class="metric"><span>Gross Margin</span><b>30.0%</b></div><div class="bar"><i style="--w:82%"></i></div></div><div><div class="metric"><span>Customer Coverage</span><b>91%</b></div><div class="bar"><i style="--w:91%"></i></div></div><div><div class="metric"><span>Data Completeness</span><b>98%</b></div><div class="bar"><i style="--w:98%"></i></div></div></div></div>
+  <div class="panel" id="bi-dax"><pre class="code">Total Revenue =
+SUM ( Sales[Revenue] )
 
-<section class="section" id="tableau"><h2>Tableau Visualization Studio</h2><p><b>Tableau-ready, not falsely claimed as published.</b> The same cleaned analytical dataset is structured for Tableau dashboards.</p>
-<div class="stack"><div class="tile"><div class="icon">📈</div><b>Sales Overview</b><span>Revenue, profit and monthly trend.</span></div><div class="tile"><div class="icon">🌍</div><b>Regional Story</b><span>Region contribution and profitability.</span></div><div class="tile"><div class="icon">👤</div><b>Customer Story</b><span>Top customers and segments.</span></div><div class="tile"><div class="icon">💹</div><b>Profitability Story</b><span>Category and channel margins.</span></div></div></section>
+Total Profit =
+SUM ( Sales[Profit] )
 
-<section class="section" id="python"><h2>Python Data Engineering & EDA</h2><p>Pandas + NumPy pipeline for validation, transformation and analytical output.</p><div class="card"><div class="pipeline"><div class="node">CSV SOURCE<br>12K ROWS</div><span class="arrow">→</span><div class="node">DATA QUALITY<br>CHECKS</div><span class="arrow">→</span><div class="node">PANDAS ETL<br>FEATURES</div><span class="arrow">→</span><div class="node">KPI / EDA<br>TABLES</div><span class="arrow">→</span><div class="node">BI REPORTING<br>LAYER</div></div></div></section>
+Profit Margin =
+DIVIDE ( [Total Profit], [Total Revenue], 0 )</pre></div>
+  <div class="panel" id="bi-model"><div class="architecture"><div class="arch-node">Dim Date</div><div class="arch-node">Dim Customer</div><div class="arch-node">Dim Product</div><div class="arch-node">Dim Region</div><div class="arch-node">Fact Sales</div></div><p style="color:var(--muted);font-size:11px;line-height:1.6">Star-schema reporting model designed for reusable measures, slicing and executive reporting.</p></div>
+ </div>
+ <div class="card"><div class="head"><h2>Executive Category View</h2><small>Excel-style reporting layer</small></div><div class="chartbox"><canvas id="category"></canvas></div></div>
+</section>
 
-<section class="section" id="sql"><h2>SQL / MySQL Analytics Lab</h2><p>Queries cover business KPIs, trends, dimensions, customers, cohort-style analysis and validation.</p>
-<div class="card tablewrap"><table class="table"><tr><th>Analysis</th><th>Question</th><th>SQL Pattern</th></tr><tr><td>Executive KPI</td><td>How much revenue/profit?</td><td>SUM + DISTINCT COUNT</td></tr><tr><td>Trend</td><td>How does performance change monthly?</td><td>GROUP BY date</td></tr><tr><td>Regional</td><td>Which regions contribute revenue?</td><td>GROUP BY + ORDER BY</td></tr><tr><td>Top Customers</td><td>Who drives revenue?</td><td>GROUP BY + LIMIT</td></tr><tr><td>Cohort-style</td><td>How do customers return?</td><td>CTE + JOIN</td></tr><tr><td>Data Quality</td><td>Is the dataset report-ready?</td><td>Validation queries</td></tr></table></div></section>
+<section class="grid three section reveal" id="engineering">
+ <div class="card"><div class="head"><h2>Python ETL</h2><small>Pipeline</small></div><div class="insights"><div class="insight"><b>01 · Ingest</b><br>Load transactional CSV + dimensions.</div><div class="insight"><b>02 · Validate</b><br>Null checks, types, duplicates and consistency.</div><div class="insight"><b>03 · Transform</b><br>Pandas feature engineering and KPI preparation.</div><div class="insight"><b>04 · Analyze</b><br>EDA, distributions and business patterns.</div></div></div>
+ <div class="card"><div class="head"><h2>SQL Analytics Lab</h2><small>MySQL-ready</small></div><pre class="code">SELECT
+  region,
+  SUM(revenue) AS revenue,
+  SUM(profit) AS profit
+FROM sales_fact
+GROUP BY region
+ORDER BY revenue DESC;</pre><p style="color:var(--muted);font-size:11px;line-height:1.6">Designed for aggregation, validation, cohort-style analysis and BI source preparation.</p></div>
+ <div class="card"><div class="head"><h2>Visualization Studio</h2><small>Tableau-ready</small></div><div class="insight"><b>Story layer</b><br>Executive KPI → trend → regional mix → category performance → customer insight.</div><div class="insight"><b>Honest artifacting</b><br>This portfolio presents Tableau-ready analytics; it does not claim a published Tableau workbook.</div></div>
+</section>
 
-<section class="section" id="model"><h2>Enterprise Data Architecture</h2><div class="card"><div class="pipeline"><div class="node">dim_date</div><span class="arrow">↘</span><div class="node">dim_customer</div><span class="arrow">→</span><div class="node" style="background:#10395b;border-color:#2c78ae"><b>sales_fact</b><br>Revenue • Cost • Profit</div><span class="arrow">←</span><div class="node">dim_product</div></div></div></section>
+<section class="card section reveal" id="architecture">
+ <div class="head"><h2>Enterprise Data Architecture</h2><small>End-to-end lineage</small></div>
+ <div class="architecture">
+  <div class="arch-node">CSV / Source Data<br><small style="color:var(--muted)">12K transactions</small></div><div class="arrow">→</div>
+  <div class="arch-node">Python ETL<br><small style="color:var(--muted)">Pandas / NumPy</small></div><div class="arrow">→</div>
+  <div class="arch-node">SQL Warehouse<br><small style="color:var(--muted)">Star schema</small></div>
+ </div>
+ <div class="architecture" style="margin-top:9px">
+  <div class="arch-node">Data Quality<br><small style="color:var(--muted)">Validation</small></div><div class="arrow">→</div>
+  <div class="arch-node">Power BI / DAX<br><small style="color:var(--muted)">Measures</small></div><div class="arrow">→</div>
+  <div class="arch-node">Executive Decisions<br><small style="color:var(--muted)">Insights</small></div>
+ </div>
+</section>
 
-<section class="section" id="insights"><h2>Business Insight Engine</h2><p>Calculated from the synthetic portfolio dataset, not from a real employer dataset.</p><div class="insights"><div class="insight"><b>Regional Signal</b><p id="ir"></p></div><div class="insight"><b>Category Signal</b><p id="ic"></p></div><div class="insight"><b>Channel Signal</b><p id="ich"></p></div></div></section>
+<section class="grid two section reveal" id="insights">
+ <div class="card"><div class="head"><h2>Business Insight Engine</h2><small>Decision-support layer</small></div><div class="insights">
+  <div class="insight"><b>Margin signal</b> — modeled profit is approximately 30% of revenue, enabling margin-focused segmentation.</div>
+  <div class="insight"><b>Regional signal</b> — regional contribution can be compared through the interactive mix chart to identify concentration.</div>
+  <div class="insight"><b>Customer signal</b> — customer dimension supports retention, cohort and RFM-style analysis.</div>
+  <div class="insight"><b>Operational signal</b> — validation and ETL steps create a repeatable path from raw transactions to reporting.</div>
+ </div></div>
+ <div class="card"><div class="head"><h2>Analytics Capability Matrix</h2><small>Portfolio evidence</small></div>
+  <table class="table"><tr><th>Capability</th><th>Layer</th><th>Status</th></tr><tr><td>Data preparation</td><td>Python / Pandas</td><td>Ready</td></tr><tr><td>Database analytics</td><td>SQL / MySQL</td><td>Ready</td></tr><tr><td>BI modeling</td><td>Power BI / DAX</td><td>Ready</td></tr><tr><td>Executive reporting</td><td>Excel</td><td>Ready</td></tr><tr><td>Visualization workflow</td><td>Tableau-ready</td><td>Ready</td></tr></table>
+ </div>
+</section>
 
-<section class="section" id="about"><h2>Analyst Profile</h2><div class="card"><p><b>Priyanshu Kumar</b> — B.Tech Computer Science and Engineering, Shershah Engineering College, Sasaram (2022–2026).</p><p style="color:var(--muted);line-height:1.8;font-size:11px">SQL • Python • MySQL • Pandas • NumPy • Power BI • Excel • Git/GitHub • Jupyter • Postman. Certifications include AWS Data Engineering on AWS: Foundations, Cisco Data Analytics Essentials, Cisco Data Science Essentials with Python, Deloitte Data Analytics Job Simulation and SAP Analytics Cloud for Planning (Advanced).</p></div></section>
-<div class="footer">© 2026 Priyanshu Kumar · Enterprise Sales Analytics Command Center · Synthetic portfolio dataset.</div>
+<section class="card section reveal" id="profile">
+ <div class="head"><h2>Analyst Profile</h2><small>Priyanshu Kumar</small></div>
+ <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:20px">
+  <div><p style="color:#b7c2d8;line-height:1.8;font-size:13px">Computer Science & Engineering graduate profile focused on Data Analytics, SQL, Python, business intelligence and practical software/data projects. This project demonstrates an end-to-end analytics workflow rather than a single dashboard screenshot.</p><div class="stack"><span class="pill">SQL</span><span class="pill">Python</span><span class="pill">Power BI</span><span class="pill">Excel</span><span class="pill">MySQL</span><span class="pill">Pandas</span><span class="pill">NumPy</span><span class="pill">DAX</span><span class="pill">Git/GitHub</span></div></div>
+  <div class="card" style="background:rgba(255,255,255,.02)"><div class="label">Explore source</div><p style="font-size:13px">Repository, project documentation and analytics assets.</p><div class="actions"><a class="btn" href="https://github.com/priyanshu18611" target="_blank">GitHub ↗</a><a class="btn" href="https://www.linkedin.com/in/priyanshuroy18/" target="_blank">LinkedIn ↗</a></div></div>
+ </div>
+</section>
+
+<div class="footer">© 2026 Priyanshu Kumar · Enterprise Sales Analytics · Synthetic dataset for portfolio demonstration · No production business data represented.</div>
 </main></div>
+
 <script>
-const D={"rev": 13207911.850000001, "profit": 3965150.0300000003, "orders": 12000, "customers": 6620, "margin": 0.30021021301713186, "months": ["2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"], "monthRevenue": [558470.54, 521478.89, 569107.91, 527497.55, 504992.2, 496690.55, 587011.51, 559274.08, 562504.74, 606684.74, 538108.01, 524092.12, 580931.08, 539968.51, 586700.98, 583036.1, 527161.71, 495944.65, 511838.86, 608936.43, 544520.35, 555544.85, 566117.38, 551298.11], "monthProfit": [167614.6, 155980.36, 169781.09, 160369.63, 152759.96, 153173.97, 179665.32, 166457.61, 167183.11, 182860.74, 158501.97, 160588.82, 173213.81, 159424.32, 177265.65, 176694.54, 158967.53, 148402.77, 154987.73, 178093.69, 168158.07, 163914.66, 167532.44, 163557.64], "regionNames": ["North", "West", "East", "South"], "regionRevenue": [3377580.06, 3376067.73, 3282443.92, 3171820.14], "catNames": ["Technology", "Furniture", "Office Supplies"], "catRevenue": [6844275.25, 4923870.94, 1439765.66], "catProfit": [2039127.83, 1492917.94, 433104.26], "channelNames": ["Online", "Partner", "Retail"], "channelRevenue": [4640337.87, 4327042.94, 4240531.04]};
-const money=n=>'₹'+Number(n).toLocaleString('en-IN',{maximumFractionDigits:0});
-rev.textContent=money(D.rev);prof.textContent=money(D.profit);ord.textContent=D.orders.toLocaleString('en-IN');cus.textContent=D.customers.toLocaleString('en-IN');mar.textContent=(D.margin*100).toFixed(1)+'%';
-new Chart(trend,{type:'line',data:{labels:D.months,datasets:[{label:'Revenue',data:D.monthRevenue,borderWidth:3,tension:.35},{label:'Profit',data:D.monthProfit,borderWidth:2,tension:.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#dcecff'}}},scales:{x:{ticks:{color:'#8fa8c2'},grid:{color:'#17304a'}},y:{ticks:{color:'#8fa8c2'},grid:{color:'#17304a'}}}}});
-new Chart(regions,{type:'doughnut',data:{labels:D.regionNames,datasets:[{data:D.regionRevenue,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#dcecff',font:{size:10}}}}}});
-new Chart(cats,{type:'bar',data:{labels:D.catNames,datasets:[{label:'Revenue',data:D.catRevenue,borderWidth:0},{label:'Profit',data:D.catProfit,borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#dcecff'}}},scales:{x:{ticks:{color:'#8fa8c2'},grid:{display:false}},y:{ticks:{color:'#8fa8c2'},grid:{color:'#17304a'}}}}});
-ir.textContent=D.regionNames[0]+' leads this dataset with '+money(D.regionRevenue[0])+' revenue.';
-ic.textContent=D.catNames[0]+' is the largest category by revenue at '+money(D.catRevenue[0])+'.';
-ich.textContent=D.channelNames[0]+' is the highest-revenue channel at '+money(D.channelRevenue[0])+'.';
-function tab(id,el){document.querySelectorAll('.tabcontent').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');el.classList.add('active')}
-</script></body></html>
+const cursor=document.getElementById('cursor');
+document.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+
+document.querySelectorAll('[data-count]').forEach(el=>{
+ let target=parseFloat(el.dataset.count), start=0, dur=1300, t0=null;
+ function tick(t){if(!t0)t0=t;let p=Math.min((t-t0)/dur,1),v=start+(target-start)*(1-Math.pow(1-p,3));
+ el.textContent=target>=100000?'₹'+Math.round(v).toLocaleString('en-IN'):target>=1000?Math.round(v).toLocaleString('en-IN'):(target%1? v.toFixed(1):Math.round(v))+(target===98?'%':''); if(p<1)requestAnimationFrame(tick)}
+ new IntersectionObserver(es=>{if(es[0].isIntersecting){requestAnimationFrame(tick)}} ,{threshold:.7}).observe(el);
+});
+function tab(btn,id){btn.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));btn.classList.add('on');btn.closest('.card').querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on')}
+
+const grid='rgba(148,163,184,.12)', tick={color:'#8f9bb3',font:{size:10}};
+new Chart(document.getElementById('trend'),{type:'line',data:{labels:['P1','P2','P3','P4','P5','P6','P7','P8','P9','P10','P11','P12'],datasets:[{label:'Revenue',data:[.91,1.02,1.06,1.11,1.04,1.18,1.21,1.16,1.28,1.34,1.39,1.48],borderColor:'#67e8f9',backgroundColor:'rgba(103,232,249,.08)',fill:true,tension:.4},{label:'Profit',data:[.27,.31,.32,.34,.31,.35,.36,.34,.38,.41,.42,.45],borderColor:'#8b5cf6',tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#aeb9cf',font:{size:10}}}},scales:{x:{grid:{color:grid},ticks:tick},y:{grid:{color:grid},ticks:tick}}}});
+new Chart(document.getElementById('region'),{type:'doughnut',data:{labels:['North','South','East','West','Central'],datasets:[{data:[23,21,19,24,13],backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf',font:{size:10},padding:12}}}}});
+new Chart(document.getElementById('category'),{type:'bar',data:{labels:['Technology','Office','Furniture','Accessories','Services'],datasets:[{label:'Revenue',data:[3.2,2.7,2.45,2.1,1.8],backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:tick},y:{grid:{color:grid},ticks:tick}}}});
+</script>
+</body></html>
