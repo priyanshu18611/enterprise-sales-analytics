@@ -1,0 +1,38 @@
+-- Power BI DAX MEASURES
+-- Import sales_fact.csv and create a Date table from dim_date.csv.
+-- Relationship: dim_date[Date] 1:* sales_fact[Order_Date]
+
+Total Revenue = SUM(sales_fact[Revenue])
+
+Total Profit = SUM(sales_fact[Profit])
+
+Total Orders = DISTINCTCOUNT(sales_fact[Order_ID])
+
+Total Customers = DISTINCTCOUNT(sales_fact[Customer_ID])
+
+Profit Margin % = DIVIDE([Total Profit], [Total Revenue], 0)
+
+Average Order Value = DIVIDE([Total Revenue], [Total Orders], 0)
+
+Revenue LY =
+CALCULATE(
+    [Total Revenue],
+    SAMEPERIODLASTYEAR(dim_date[Date])
+)
+
+Revenue YoY % =
+DIVIDE(
+    [Total Revenue] - [Revenue LY],
+    [Revenue LY],
+    0
+)
+
+Profit YoY % =
+VAR CurrentProfit = [Total Profit]
+VAR PreviousProfit =
+    CALCULATE([Total Profit], SAMEPERIODLASTYEAR(dim_date[Date]))
+RETURN
+DIVIDE(CurrentProfit - PreviousProfit, PreviousProfit, 0)
+
+Orders per Customer =
+DIVIDE([Total Orders], [Total Customers], 0)
