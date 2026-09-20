@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Priyanshu Kumar | Data Analytics Portfolio</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+:root{--bg:#08111f;--card:#101d30;--text:#eef5ff;--muted:#9db0c8;--accent:#54a8ff;--line:#20334d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(135deg,#07101c,#0b1830);color:var(--text);font-family:Inter,Arial,sans-serif}
+.container{max-width:1180px;margin:auto;padding:28px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0 30px}
+.logo{font-weight:800;font-size:22px}.pill{padding:9px 14px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+.hero{padding:45px 0}.hero h1{font-size:clamp(42px,7vw,76px);line-height:.98;margin:0 0 18px}.hero p{max-width:760px;color:var(--muted);font-size:18px;line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:rgba(16,29,48,.9);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.22)}
+.kpi{font-size:30px;font-weight:800;margin-top:8px}.muted{color:var(--muted)}h2{margin-top:55px}
+.tags span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 11px;margin:5px;color:#cfe5ff}
+.chartbox{height:360px;min-height:280px}.project h3{margin-top:0}.project ul{line-height:1.8;color:var(--muted)}
+footer{padding:50px 0;color:var(--muted)}
+a{color:var(--accent);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="container">
+<nav><div class="logo">PRIYANSHU KUMAR</div><div class="pill">Data Analytics Portfolio</div></nav>
+<section class="hero">
+<div class="muted">CSE Graduate • SQL • Python • Power BI • Excel</div>
+<h1>Enterprise Sales<br>Analytics</h1>
+<p>End-to-end analytics portfolio project covering data validation, SQL analytics, Python ETL/EDA, DAX measures, Power BI dashboard design and Excel reporting.</p>
+<p><a href="https://github.com/priyanshu18611">GitHub</a> · <a href="https://www.linkedin.com/in/priyanshuroy18">LinkedIn</a> · <a href="https://priyanshu18611.github.io/portfolio/">Main Portfolio</a></p>
+</section>
+
+<section class="grid">
+<div class="card"><div class="muted">Revenue</div><div class="kpi" id="revenue">—</div></div>
+<div class="card"><div class="muted">Profit</div><div class="kpi" id="profit">—</div></div>
+<div class="card"><div class="muted">Orders</div><div class="kpi" id="orders">—</div></div>
+<div class="card"><div class="muted">Customers</div><div class="kpi" id="customers">—</div></div>
+</section>
+
+<h2>Interactive Analytics</h2>
+<div class="card chartbox"><canvas id="trend"></canvas></div>
+
+<h2>Technology Stack</h2>
+<div class="card tags">
+<span>SQL / MySQL</span><span>Python</span><span>Pandas</span><span>NumPy</span><span>Power BI</span><span>DAX</span><span>Excel</span><span>ETL</span><span>Star Schema</span><span>Jupyter</span><span>Git/GitHub</span>
+</div>
+
+<h2>Project Deliverables</h2>
+<div class="grid">
+<div class="card project"><h3>SQL Analytics</h3><ul><li>Star-schema database design</li><li>KPI, regional, category and customer queries</li><li>Data-quality validation checks</li></ul></div>
+<div class="card project"><h3>Python ETL</h3><ul><li>Data validation and cleaning</li><li>Feature engineering</li><li>Analytics-ready CSV outputs</li></ul></div>
+<div class="card project"><h3>Power BI</h3><ul><li>Executive KPI dashboard</li><li>Trend, region, category and channel views</li><li>DAX measures and time intelligence</li></ul></div>
+<div class="card project"><h3>Excel</h3><ul><li>Executive dashboard workbook</li><li>KPI cards and charts</li><li>Raw data + reporting layer</li></ul></div>
+</div>
+
+<h2>About Me</h2>
+<div class="card">
+<p><strong>Priyanshu Kumar</strong> — B.Tech Computer Science and Engineering, Shershah Engineering College, Sasaram (2022–2026).</p>
+<p class="muted">Skills: SQL, Python, Java, C/C++, JavaScript, MySQL, MongoDB, Pandas, NumPy, Power BI, Excel, Git/GitHub, Jupyter and Postman. Certifications include Cisco Data Analytics Essentials, Cisco Data Science Essentials with Python, AWS Data Engineering on AWS: Foundations, Deloitte Data Analytics Job Simulation and SAP Analytics Cloud for Planning (Advanced).</p>
+</div>
+<footer>© 2026 Priyanshu Kumar · Built as a portfolio-ready analytics case study.</footer>
+</div>
+
+<script>
+const labels = ["2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"];
+const values = [558470.54, 521478.89, 569107.91, 527497.55, 504992.2, 496690.55, 587011.51, 559274.08, 562504.74, 606684.74, 538108.01, 524092.12, 580931.08, 539968.51, 586700.98, 583036.1, 527161.71, 495944.65, 511838.86, 608936.43, 544520.35, 555544.85, 566117.38, 551298.11];
+document.getElementById('revenue').textContent = '₹' + (13207911.850000001).toLocaleString('en-IN',{maximumFractionDigits:0});
+document.getElementById('profit').textContent = '₹' + (3965150.0300000003).toLocaleString('en-IN',{maximumFractionDigits:0});
+document.getElementById('orders').textContent = (12000).toLocaleString('en-IN');
+document.getElementById('customers').textContent = (6620).toLocaleString('en-IN');
+new Chart(document.getElementById('trend'), {
+ type:'line',
+ data:{labels:labels,datasets:[{label:'Revenue',data:values,tension:.35,borderWidth:3,fill:false}]},
+ options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#eef5ff'}}},
+ scales:{x:{ticks:{color:'#9db0c8'},grid:{color:'#20334d'}},y:{ticks:{color:'#9db0c8'},grid:{color:'#20334d'}}}}
+});
+</script>
+</body></html>
