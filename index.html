@@ -15,7 +15,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:8px 0 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.card{background:rgba(16,29,48,.9);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.22)}
 .kpi{font-size:30px;font-weight:800;margin-top:8px}.muted{color:var(--muted)}h2{margin-top:55px}
 .tags span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:8px 11px;margin:5px;color:#cfe5ff}
-.chartbox{height:360px}.project h3{margin-top:0}.project ul{line-height:1.8;color:var(--muted)}
+.chartbox{height:360px;min-height:280px}.project h3{margin-top:0}.project ul{line-height:1.8;color:var(--muted)}
 footer{padding:50px 0;color:var(--muted)}
 a{color:var(--accent);text-decoration:none}
 </style>
@@ -64,10 +64,10 @@ a{color:var(--accent);text-decoration:none}
 <script>
 const labels = ["2024-01", "2024-02", "2024-03", "2024-04", "2024-05", "2024-06", "2024-07", "2024-08", "2024-09", "2024-10", "2024-11", "2024-12", "2025-01", "2025-02", "2025-03", "2025-04", "2025-05", "2025-06", "2025-07", "2025-08", "2025-09", "2025-10", "2025-11", "2025-12"];
 const values = [558470.54, 521478.89, 569107.91, 527497.55, 504992.2, 496690.55, 587011.51, 559274.08, 562504.74, 606684.74, 538108.01, 524092.12, 580931.08, 539968.51, 586700.98, 583036.1, 527161.71, 495944.65, 511838.86, 608936.43, 544520.35, 555544.85, 566117.38, 551298.11];
-document.getElementById('revenue').textContent = '₹' + 13207911.850000001.toLocaleString('en-IN',{maximumFractionDigits:0});
-document.getElementById('profit').textContent = '₹' + 3965150.0300000003.toLocaleString('en-IN',{maximumFractionDigits:0});
-document.getElementById('orders').textContent = 12000.toLocaleString('en-IN');
-document.getElementById('customers').textContent = 6620.toLocaleString('en-IN');
+document.getElementById('revenue').textContent = '₹' + (13207911.850000001).toLocaleString('en-IN',{maximumFractionDigits:0});
+document.getElementById('profit').textContent = '₹' + (3965150.0300000003).toLocaleString('en-IN',{maximumFractionDigits:0});
+document.getElementById('orders').textContent = (12000).toLocaleString('en-IN');
+document.getElementById('customers').textContent = (6620).toLocaleString('en-IN');
 new Chart(document.getElementById('trend'), {
  type:'line',
  data:{labels:labels,datasets:[{label:'Revenue',data:values,tension:.35,borderWidth:3,fill:false}]},
