@@ -12,7 +12,7 @@
 :root{--bg:#060914;--panel:rgba(14,20,36,.72);--panel2:#0d1425;--line:rgba(148,163,184,.14);--text:#e8eefc;--muted:#8f9bb3;--a:#67e8f9;--b:#8b5cf6;--c:#34d399;--warn:#fbbf24;--danger:#fb7185;--shadow:0 25px 80px rgba(0,0,0,.34)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 0%,rgba(103,232,249,.08),transparent 30%),radial-gradient(circle at 15% 20%,rgba(139,92,246,.09),transparent 28%),var(--bg);color:var(--text);font-family:Inter,sans-serif;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:45px 45px;mask-image:linear-gradient(to bottom,black,transparent 80%);z-index:-1}
-a{color:inherit;text-decoration:none}.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{position:fixed;width:260px;height:100vh;padding:24px 18px;border-right:1px solid var(--line);background:rgba(5,9,20,.8);backdrop-filter:blur(22px);z-index:20}.brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#06101a;font-weight:900;box-shadow:0 0 30px rgba(103,232,249,.25)}.brand b{font-family:"Space Grotesk";font-size:15px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.nav{display:grid;gap:6px}.nav a{padding:12px 13px;border-radius:11px;color:var(--muted);font-size:13px;transition:.25s}.nav a:hover,.nav a.active{background:rgba(103,232,249,.08);color:var(--text);transform:translateX(3px)}.nav a span{display:inline-block;width:24px}.side-foot{position:absolute;bottom:22px;left:18px;right:18px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.side-foot small{color:var(--muted);line-height:1.5}.main{grid-column:2;padding:28px 34px 60px;max-width:1600px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.crumb{color:var(--muted);font-size:12px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);padding:10px 13px;border-radius:10px;font-size:12px;cursor:pointer;transition:.25s}.btn:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.35)}.hero{position:relative;padding:38px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(10,15,29,.68));box-shadow:var(--shadow);margin-bottom:18px}.hero:after{content:"";position:absolute;width:420px;height:420px;right:-140px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.22),transparent 65%);filter:blur(4px)}.eyebrow{color:var(--a);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:"Space Grotesk";font-size:clamp(32px,5vw,64px);line-height:.98;margin:12px 0 15px;max-width:850px}.gradient{background:linear-gradient(90deg,#fff,var(--a),#b9a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:780px;color:#aeb9cf;line-height:1.7;font-size:14px}.hero-grid{display:grid;grid-template-columns:1fr 330px;gap:30px;align-items:end}.orb{height:210px;position:relative;display:grid;place-items:center}.orb .ring{position:absolute;border:1px solid rgba(103,232,249,.25);border-radius:50%;animation:spin 14s linear infinite}.ring.r1{width:170px;height:170px}.ring.r2{width:125px;height:125px;animation-direction:reverse;animation-duration:9s}.ring.r3{width:75px;height:75px;animation-duration:5s}.core{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 55px rgba(103,232,249,.55);animation:pulse 2.4s infinite}.node{position:absolute;width:7px;height:7px;background:var(--a);border-radius:50%;box-shadow:0 0 14px var(--a)}.n1{top:20px;right:65px}.n2{bottom:30px;left:50px}.n3{top:80px;left:20px}.n4{bottom:15px;right:30px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.2);box-shadow:0 0 80px rgba(103,232,249,.8)}}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(5,1fr);margin-bottom:16px}.card{border:1px solid var(--line);border-radius:17px;background:var(--panel);backdrop-filter:blur(18px);box-shadow:0 16px 50px rgba(0,0,0,.18);padding:18px}.kpi{position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;inset:auto -30px -35px auto;width:100px;height:100px;background:radial-gradient(circle,rgba(103,232,249,.16),transparent 65%)}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.value{font-family:"Space Grotesk";font-size:27px;font-weight:700;margin:9px 0}.delta{font-size:11px;color:var(--c)}.two{grid-template-columns:1.65fr 1fr}.three{grid-template-columns:1fr 1fr 1fr}.section{margin-top:16px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.head h2{font-family:"Space Grotesk";font-size:18px;margin:0}.head small{color:var(--muted);font-size:11px}.chartbox{height:330px}.chartbox canvas{width:100%!important;height:100%!important}.tabs{display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap}.tab{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:11px}.tab.on{background:rgba(103,232,249,.1);color:var(--a);border-color:rgba(103,232,249,.25)}.panel{display:none}.panel.on{display:block}.code{background:#070b15;border:1px solid var(--line);border-radius:12px;padding:15px;color:#b9c8e3;font:12px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto}.architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:center}.arch-node{padding:16px 8px;text-align:center;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);font-size:11px}.arrow{color:var(--a);text-align:center}.metric-list{display:grid;gap:9px}.metric{display:grid;grid-template-columns:1fr auto;gap:10px;font-size:12px}.bar{height:6px;background:#151d30;border-radius:20px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--a),var(--b));width:var(--w)}.insights{display:grid;gap:9px}.insight{padding:13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:12px;line-height:1.5}.insight b{color:var(--a)}.stack{display:flex;flex-wrap:wrap;gap:7px}.pill{padding:7px 9px;border:1px solid var(--line);border-radius:99px;color:#b9c5da;font-size:10px;background:rgba(255,255,255,.025)}.footer{margin-top:30px;text-align:center;color:var(--muted);font-size:11px}.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}.cursor{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(103,232,249,.06),transparent 65%);transform:translate(-50%,-50%);z-index:2}.table{width:100%;border-collapse:collapse;font-size:11px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.table th{color:var(--muted);font-weight:500}.status{display:inline-flex;align-items:center;gap:6px;color:var(--c)}.dot{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.hero-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr 1fr}.side{width:220px}.app{grid-template-columns:220px 1fr}.main{padding:22px}}@media(max-width:760px){.side{position:relative;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line)}.app{display:block}.nav{grid-template-columns:repeat(3,1fr)}.side-foot{display:none}.main{padding:16px}.kpis,.three{grid-template-columns:1fr 1fr}.hero{padding:24px}.orb{display:none}.top .actions .btn:first-child{display:none}.architecture{grid-template-columns:1fr}.arrow{display:none}}@media(max-width:480px){.kpis,.three{grid-template-columns:1fr}.hero h1{font-size:34px}}
+a{color:inherit;text-decoration:none}.app{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.side{position:fixed;width:260px;height:100vh;padding:24px 18px;border-right:1px solid var(--line);background:rgba(5,9,20,.8);backdrop-filter:blur(22px);z-index:20}.brand{display:flex;gap:12px;align-items:center;margin-bottom:28px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#06101a;font-weight:900;box-shadow:0 0 30px rgba(103,232,249,.25)}.brand b{font-family:"Space Grotesk";font-size:15px}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.nav{display:grid;gap:6px}.nav a{padding:12px 13px;border-radius:11px;color:var(--muted);font-size:13px;transition:.25s}.nav a:hover,.nav a.active{background:rgba(103,232,249,.08);color:var(--text);transform:translateX(3px)}.nav a span{display:inline-block;width:24px}.side-foot{position:absolute;bottom:22px;left:18px;right:18px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.025)}.side-foot small{color:var(--muted);line-height:1.5}.main{grid-column:2;padding:28px 34px 60px;max-width:1600px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.crumb{color:var(--muted);font-size:12px}.actions{display:flex;gap:8px}.btn{border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);padding:10px 13px;border-radius:10px;font-size:12px;cursor:pointer;transition:.25s}.btn:hover{transform:translateY(-2px);border-color:rgba(103,232,249,.35)}.hero{position:relative;padding:38px;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(10,15,29,.68));box-shadow:var(--shadow);margin-bottom:18px}.hero:after{content:"";position:absolute;width:420px;height:420px;right:-140px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(103,232,249,.22),transparent 65%);filter:blur(4px)}.eyebrow{color:var(--a);font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:"Space Grotesk";font-size:clamp(32px,5vw,64px);line-height:.98;margin:12px 0 15px;max-width:850px}.gradient{background:linear-gradient(90deg,#fff,var(--a),#b9a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:780px;color:#aeb9cf;line-height:1.7;font-size:14px}.hero-grid{display:grid;grid-template-columns:1fr 330px;gap:30px;align-items:end}.orb{height:210px;position:relative;display:grid;place-items:center}.orb .ring{position:absolute;border:1px solid rgba(103,232,249,.25);border-radius:50%;animation:spin 14s linear infinite}.ring.r1{width:170px;height:170px}.ring.r2{width:125px;height:125px;animation-direction:reverse;animation-duration:9s}.ring.r3{width:75px;height:75px;animation-duration:5s}.core{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b));box-shadow:0 0 55px rgba(103,232,249,.55);animation:pulse 2.4s infinite}.node{position:absolute;width:7px;height:7px;background:var(--a);border-radius:50%;box-shadow:0 0 14px var(--a)}.n1{top:20px;right:65px}.n2{bottom:30px;left:50px}.n3{top:80px;left:20px}.n4{bottom:15px;right:30px}@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.2);box-shadow:0 0 80px rgba(103,232,249,.8)}}.grid{display:grid;gap:16px}.kpis{grid-template-columns:repeat(5,1fr);margin-bottom:16px}.card{border:1px solid var(--line);border-radius:17px;background:var(--panel);backdrop-filter:blur(18px);box-shadow:0 16px 50px rgba(0,0,0,.18);padding:18px}.kpi{position:relative;overflow:hidden}.kpi:before{content:"";position:absolute;inset:auto -30px -35px auto;width:100px;height:100px;background:radial-gradient(circle,rgba(103,232,249,.16),transparent 65%)}.label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.value{font-family:"Space Grotesk";font-size:27px;font-weight:700;margin:9px 0}.delta{font-size:11px;color:var(--c)}.two{grid-template-columns:1.65fr 1fr}.three{grid-template-columns:1fr 1fr 1fr}.section{margin-top:16px}.head{display:flex;justify-content:space-between;align-items:center;margin-bottom:13px}.head h2{font-family:"Space Grotesk";font-size:18px;margin:0}.head small{color:var(--muted);font-size:11px}.chartbox{height:330px}.chartbox canvas{width:100%!important;height:100%!important}.tabs{display:flex;gap:6px;margin-bottom:15px;flex-wrap:wrap}.tab{padding:8px 11px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:11px}.tab.on{background:rgba(103,232,249,.1);color:var(--a);border-color:rgba(103,232,249,.25)}.panel{display:none}.panel.on{display:block}.code{background:#070b15;border:1px solid var(--line);border-radius:12px;padding:15px;color:#b9c8e3;font:12px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;overflow:auto}.architecture{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;align-items:center}.arch-node{padding:16px 8px;text-align:center;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025);font-size:11px}.arrow{color:var(--a);text-align:center}.metric-list{display:grid;gap:9px}.metric{display:grid;grid-template-columns:1fr auto;gap:10px;font-size:12px}.bar{height:6px;background:#151d30;border-radius:20px;overflow:hidden;margin-top:6px}.bar i{display:block;height:100%;border-radius:20px;background:linear-gradient(90deg,var(--a),var(--b));width:var(--w)}.insights{display:grid;gap:9px}.insight{padding:13px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.025);font-size:12px;line-height:1.5}.insight b{color:var(--a)}.stack{display:flex;flex-wrap:wrap;gap:7px}.pill{padding:7px 9px;border:1px solid var(--line);border-radius:99px;color:#b9c5da;font-size:10px;background:rgba(255,255,255,.025)}.footer{margin-top:30px;text-align:center;color:var(--muted);font-size:11px}.reveal{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:none}.cursor{position:fixed;width:240px;height:240px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(103,232,249,.06),transparent 65%);transform:translate(-50%,-50%);z-index:2}.table{width:100%;border-collapse:collapse;font-size:11px}.table th,.table td{padding:10px;border-bottom:1px solid var(--line);text-align:left}.table th{color:var(--muted);font-weight:500}.status{display:inline-flex;align-items:center;gap:6px;color:var(--c)}.dot{width:6px;height:6px;border-radius:50%;background:var(--c);box-shadow:0 0 10px var(--c)}@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.two,.hero-grid{grid-template-columns:1fr}.architecture{grid-template-columns:1fr 1fr}.side{width:220px}.app{grid-template-columns:220px 1fr}.main{padding:22px}}@media(max-width:760px){.side{position:relative;width:100%;height:auto;border-right:0;border-bottom:1px solid var(--line)}.app{display:block}.nav{grid-template-columns:repeat(3,1fr)}.side-foot{display:none}.main{padding:16px}.kpis,.three{grid-template-columns:1fr 1fr}.hero{padding:24px}.orb{display:none}.top .actions .btn:first-child{display:none}.architecture{grid-template-columns:1fr}.arrow{display:none}}@media(max-width:480px){.kpis,.three{grid-template-columns:1fr}.hero h1{font-size:34px}}
 </style>
 </head>
 <body>
@@ -131,95 +131,189 @@ ORDER BY revenue DESC;</pre><p style="color:var(--muted);font-size:11px;line-hei
 
 <script>
 const DATA_URL='data/sales_fact.csv';
-const fmtIN=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(n);
+const fmtIN=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(Number(n)||0);
 const money=n=>'₹'+fmtIN(n);
 const q=id=>document.getElementById(id);
 let rows=[], charts={};
 
 function parseCSV(text){
-  const lines=text.trim().split(/?
-/), h=lines.shift().split(',');
+  const lines=text.trim().split(/\r?\n/);
+  if(!lines.length) return [];
+  const header=lines.shift().split(',');
   return lines.map(line=>{
     const v=line.split(','), o={};
-    h.forEach((k,i)=>o[k]=v[i]);
-    ['Quantity','Unit_Price','Discount','Revenue','Cost','Profit','Year','Month','Profit_Margin'].forEach(k=>o[k]=Number(o[k]));
+    header.forEach((k,i)=>o[k]=v[i]??'');
+    ['Quantity','Unit_Price','Discount','Revenue','Cost','Profit','Year','Month','Profit_Margin']
+      .forEach(k=>o[k]=Number(o[k]||0));
+    o.Year_Month=`${o.Year}-${String(o.Month).padStart(2,'0')}`;
     return o;
   });
 }
 function group(a,key,metric){
-  return a.reduce((m,r)=>(m[r[key]]=(m[r[key]]||0)+Number(r[metric]),m),{});
+  return a.reduce((m,r)=>(m[r[key]]=(m[r[key]]||0)+Number(r[metric]||0),m),{});
 }
 function selected(){
-  const r=q('filterRegion')?.value||'All', c=q('filterCategory')?.value||'All', ch=q('filterChannel')?.value||'All';
-  return rows.filter(x=>(r==='All'||x.Region===r)&&(c==='All'||x.Category===c)&&(ch==='All'||x.Channel===ch));
+  const r=q('filterRegion')?.value||'All';
+  const c=q('filterCategory')?.value||'All';
+  const ch=q('filterChannel')?.value||'All';
+  return rows.filter(x=>
+    (r==='All'||x.Region===r)&&
+    (c==='All'||x.Category===c)&&
+    (ch==='All'||x.Channel===ch)
+  );
 }
 function addOptions(id,values){
   const el=q(id); if(!el)return;
-  values.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});
+  el.querySelectorAll('option:not(:first-child)').forEach(x=>x.remove());
+  values.forEach(v=>{
+    const o=document.createElement('option');
+    o.value=v;o.textContent=v;el.appendChild(o);
+  });
 }
 function setKPI(label,value){
-  const el=[...document.querySelectorAll('.kpi')].find(x=>x.querySelector('.label')?.textContent.trim().toLowerCase()===label.toLowerCase())?.querySelector('.value');
-  if(el)el.textContent=value;
+  const el=[...document.querySelectorAll('.kpi')].find(x=>
+    x.querySelector('.label')?.textContent.trim().toLowerCase()===label.toLowerCase()
+  )?.querySelector('.value');
+  if(el) el.textContent=value;
 }
-function destroyCharts(){Object.values(charts).forEach(c=>c.destroy());charts={}}
+function destroyCharts(){
+  Object.values(charts).forEach(c=>{try{c.destroy()}catch(e){}});
+  charts={};
+}
 function render(){
-  const a=selected(), revenue=a.reduce((s,x)=>s+x.Revenue,0), profit=a.reduce((s,x)=>s+x.Profit,0);
-  setKPI('Revenue',money(revenue)); setKPI('Profit',money(profit)); setKPI('Orders',fmtIN(a.length));
-  setKPI('Customers',fmtIN(new Set(a.map(x=>x.Customer_ID)).size));
-  setKPI('Data Quality','100%');
+  const a=selected();
+  const revenue=a.reduce((s,x)=>s+x.Revenue,0);
+  const profit=a.reduce((s,x)=>s+x.Profit,0);
+  const customers=new Set(a.map(x=>x.Customer_ID)).size;
   const margin=revenue?profit/revenue*100:0;
-  document.querySelectorAll('.kpi .delta')[1]?.replaceChildren('● '+margin.toFixed(1)+'% realized margin');
+
+  setKPI('Revenue',money(revenue));
+  setKPI('Profit',money(profit));
+  setKPI('Orders',fmtIN(a.length));
+  setKPI('Customers',fmtIN(customers));
+  setKPI('Data Quality','100%');
+
+  const deltas=document.querySelectorAll('.kpi .delta');
+  if(deltas[1]) deltas[1].textContent='● '+margin.toFixed(1)+'% realized margin';
+
   destroyCharts();
-  const grid='rgba(148,163,184,.12)', tick={color:'#8f9bb3',font:{size:10}};
-  const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#aeb9cf',font:{size:10}}}},scales:{x:{grid:{color:grid},ticks:tick},y:{grid:{color:grid},ticks:tick}}};
+  if(typeof Chart==='undefined') return;
+
+  const grid='rgba(148,163,184,.12)';
+  const tick={color:'#8f9bb3',font:{size:10}};
+  const common={
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:'#aeb9cf',font:{size:10}}}},
+    scales:{x:{grid:{color:grid},ticks:tick},y:{grid:{color:grid},ticks:tick}}
+  };
+
   const monthly=group(a,'Year_Month','Revenue');
   const keys=Object.keys(monthly).sort();
-  const t=q('trend');
-  if(t)charts.trend=new Chart(t,{type:'line',data:{labels:keys,datasets:[{label:'Revenue',data:keys.map(k=>monthly[k]),borderColor:'#67e8f9',backgroundColor:'rgba(103,232,249,.08)',fill:true,tension:.35,borderWidth:2}]},options:common});
+  const trend=q('trend');
+  if(trend) charts.trend=new Chart(trend,{
+    type:'line',
+    data:{labels:keys,datasets:[{
+      label:'Revenue',data:keys.map(k=>monthly[k]),
+      borderColor:'#67e8f9',backgroundColor:'rgba(103,232,249,.08)',
+      fill:true,tension:.35,borderWidth:2
+    }]},options:common
+  });
+
   const region=group(a,'Region','Revenue'), rc=q('region');
-  if(rc)charts.region=new Chart(rc,{type:'doughnut',data:{labels:Object.keys(region),datasets:[{data:Object.values(region),backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf',font:{size:10},padding:10}}}}});
+  if(rc) charts.region=new Chart(rc,{
+    type:'doughnut',
+    data:{labels:Object.keys(region),datasets:[{
+      data:Object.values(region),
+      backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],
+      borderWidth:0
+    }]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'68%',
+      plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf',font:{size:10},padding:10}}}}
+  });
+
   const cat=group(a,'Category','Revenue'), cc=q('category');
-  if(cc)charts.category=new Chart(cc,{type:'bar',data:{labels:Object.keys(cat),datasets:[{label:'Revenue',data:Object.values(cat),backgroundColor:'#67e8f9',borderRadius:7}]},options:{...common,plugins:{legend:{display:false}}}});
+  if(cc) charts.category=new Chart(cc,{
+    type:'bar',
+    data:{labels:Object.keys(cat),datasets:[{
+      label:'Revenue',data:Object.values(cat),
+      backgroundColor:'#67e8f9',borderRadius:7
+    }]},
+    options:{...common,plugins:{legend:{display:false}}}
+  });
+
   const ch=group(a,'Channel','Revenue'), chC=q('channel');
-  if(chC)charts.channel=new Chart(chC,{type:'doughnut',data:{labels:Object.keys(ch),datasets:[{data:Object.values(ch),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf'}}}}});
+  if(chC) charts.channel=new Chart(chC,{
+    type:'doughnut',
+    data:{labels:Object.keys(ch),datasets:[{data:Object.values(ch),borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf'}}}}
+  });
+
   updateInsights(a,revenue,profit);
 }
 function updateInsights(a,revenue,profit){
   const cat=group(a,'Category','Revenue'), reg=group(a,'Region','Revenue');
-  const topCat=Object.entries(cat).sort((x,y)=>y[1]-x[1])[0], topReg=Object.entries(reg).sort((x,y)=>y[1]-x[1])[0];
+  const topCat=Object.entries(cat).sort((x,y)=>y[1]-x[1])[0];
+  const topReg=Object.entries(reg).sort((x,y)=>y[1]-x[1])[0];
   const box=document.querySelector('#insights .insights');
-  if(box)box.innerHTML=`<div class="insight"><b>Revenue driver</b> — ${topCat?.[0]||'—'} contributes ${topCat?money(topCat[1]):'—'} in the current view.</div>
-  <div class="insight"><b>Regional concentration</b> — ${topReg?.[0]||'—'} is the leading region at ${topReg?money(topReg[1]):'—'}.</div>
-  <div class="insight"><b>Profitability</b> — current filtered margin is ${revenue?(profit/revenue*100).toFixed(1):0}%.</div>
-  <div class="insight"><b>Data quality</b> — 12,000 transaction records pass the portfolio validation framework.</div>`;
+  if(box) box.innerHTML=`
+    <div class="insight"><b>Revenue driver</b> — ${topCat?.[0]||'—'} contributes ${topCat?money(topCat[1]):'—'} in the current view.</div>
+    <div class="insight"><b>Regional concentration</b> — ${topReg?.[0]||'—'} leads at ${topReg?money(topReg[1]):'—'}.</div>
+    <div class="insight"><b>Profitability</b> — current filtered margin is ${revenue?(profit/revenue*100).toFixed(1):0}%.</div>
+    <div class="insight"><b>Data quality</b> — ${fmtIN(rows.length)} transaction records loaded successfully.</div>`;
 }
 function addAdvancedSection(){
   const arch=document.getElementById('architecture');
-  if(!arch)return;
-  const section=document.createElement('section');section.className='card section reveal';section.innerHTML=`
-  <div class="head"><h2>Advanced Decision Intelligence</h2><small>Customer + forecast layer</small></div>
-  <div class="grid two">
-    <div><h3 style="margin-top:0">Revenue Forecast</h3><p style="color:var(--muted);font-size:12px">Three-month baseline trend forecast generated from the historical monthly revenue series.</p>
-      <div class="insight"><b>Forecast horizon:</b> next 3 months</div><div class="insight"><b>Method:</b> transparent linear trend baseline</div>
-    </div>
-    <div><h3 style="margin-top:0">Customer Intelligence</h3><p style="color:var(--muted);font-size:12px">RFM scoring is included as an analytical asset in <code>data/customer_rfm.csv</code>.</p>
-      <div class="insight"><b>Dimensions:</b> Recency · Frequency · Monetary</div><div class="insight"><b>Segments:</b> Champions · Loyal · Developing · At Risk</div>
-    </div>
-  </div>`;
+  if(!arch || document.getElementById('advanced-decision')) return;
+  const section=document.createElement('section');
+  section.id='advanced-decision';
+  section.className='card section reveal';
+  section.style.marginTop='18px';
+  section.innerHTML=`
+    <div class="head"><h2>Advanced Decision Intelligence</h2><small>Customer + forecast layer</small></div>
+    <div class="grid two">
+      <div>
+        <h3 style="margin-top:0">Revenue Forecast</h3>
+        <p style="color:var(--muted);font-size:12px">Historical monthly revenue is prepared for transparent forecasting and scenario analysis.</p>
+        <div class="insight"><b>Forecast horizon:</b> next 3 months</div>
+        <div class="insight"><b>Method:</b> transparent trend baseline</div>
+      </div>
+      <div>
+        <h3 style="margin-top:0">Customer Intelligence</h3>
+        <p style="color:var(--muted);font-size:12px">RFM scoring is included in <code>data/customer_rfm.csv</code>.</p>
+        <div class="insight"><b>Dimensions:</b> Recency · Frequency · Monetary</div>
+        <div class="insight"><b>Segments:</b> Champions · Loyal · Developing · At Risk</div>
+      </div>
+    </div>`;
   arch.after(section);
 }
+function revealAll(){
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('show'));
+}
 async function boot(){
+  revealAll();
   try{
-    const r=await fetch(DATA_URL,{cache:'no-store'}); if(!r.ok)throw new Error('CSV unavailable');
-    rows=parseCSV(await r.text());
-    addOptions('filterRegion',[...new Set(rows.map(x=>x.Region))].sort());
-    addOptions('filterCategory',[...new Set(rows.map(x=>x.Category))].sort());
-    addOptions('filterChannel',[...new Set(rows.map(x=>x.Channel))].sort());
-    addAdvancedSection(); render();
-    ['filterRegion','filterCategory','filterChannel'].forEach(id=>q(id)?.addEventListener('change',render));
+    const r=await fetch(DATA_URL,{cache:'no-store'});
+    if(!r.ok) throw new Error(`CSV unavailable: ${r.status}`);
+    const text=await r.text();
+    rows=parseCSV(text);
+    if(!rows.length) throw new Error('CSV empty');
+
+    addOptions('filterRegion',[...new Set(rows.map(x=>x.Region).filter(Boolean))].sort());
+    addOptions('filterCategory',[...new Set(rows.map(x=>x.Category).filter(Boolean))].sort());
+    addOptions('filterChannel',[...new Set(rows.map(x=>x.Channel).filter(Boolean))].sort());
+
+    addAdvancedSection();
+    render();
+    revealAll();
+
+    ['filterRegion','filterCategory','filterChannel']
+      .forEach(id=>q(id)?.addEventListener('change',render));
   }catch(e){
-    console.error(e);
+    console.error('Analytics boot failed:',e);
     document.querySelectorAll('.kpi .value').forEach(x=>x.textContent='Data unavailable');
+    const box=document.querySelector('#insights .insights');
+    if(box) box.innerHTML='<div class="insight"><b>Dashboard data error</b> — Check that <code>data/sales_fact.csv</code> exists in the repository.</div>';
   }
 }
 boot();
