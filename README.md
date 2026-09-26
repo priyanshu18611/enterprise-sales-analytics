@@ -575,3 +575,13 @@ The included dataset is synthetic and should not be interpreted as real company 
 ⭐ If you find this project useful, consider starring the repository.
 
 </div>
+
+## v2 Enterprise Enhancements
+- Live dashboard reads the 12,000-row transaction fact table directly.
+- Interactive Region / Category / Channel filters recalculate KPIs and charts.
+- Customer RFM dataset and segmentation layer.
+- Monthly KPI dataset and transparent 3-month revenue forecast baseline.
+- Data-quality and analytical asset documentation.
+- GitHub Pages remains the deployment target.
+
+**Important:** the dataset is synthetic. Power BI/DAX assets are provided as implementation-ready definitions; no claim is made that a proprietary production Power BI workbook exists.
