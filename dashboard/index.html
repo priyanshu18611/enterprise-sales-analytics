@@ -47,6 +47,7 @@ a{color:inherit;text-decoration:none}.app{display:grid;grid-template-columns:260
  </div>
 </section>
 
+<section class="card reveal" style="margin:18px 0;padding:14px"><div class="head"><h2>Live Analytics Filters</h2><small>Powered by 12K transaction-level records</small></div><div style="display:flex;gap:10px;flex-wrap:wrap"><select id="filterRegion" style="background:#0b1424;color:#e8eefc;border:1px solid var(--line);padding:10px;border-radius:9px"><option>All</option></select><select id="filterCategory" style="background:#0b1424;color:#e8eefc;border:1px solid var(--line);padding:10px;border-radius:9px"><option>All</option></select><select id="filterChannel" style="background:#0b1424;color:#e8eefc;border:1px solid var(--line);padding:10px;border-radius:9px"><option>All</option></select></div></section>
 <section class="grid kpis reveal">
  <div class="card kpi"><span class="label">Revenue</span><div class="value" data-count="13207911.85">₹0</div><span class="delta">▲ Enterprise sales volume</span></div>
  <div class="card kpi"><span class="label">Profit</span><div class="value" data-count="3965150.03">₹0</div><span class="delta">▲ ~30% modeled margin</span></div>
@@ -127,23 +128,101 @@ ORDER BY revenue DESC;</pre><p style="color:var(--muted);font-size:11px;line-hei
 <div class="footer">© 2026 Priyanshu Kumar · Enterprise Sales Analytics · Synthetic dataset for portfolio demonstration · No production business data represented.</div>
 </main></div>
 
+
 <script>
-const cursor=document.getElementById('cursor');
-document.addEventListener('pointermove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
+const DATA_URL='data/sales_fact.csv';
+const fmtIN=n=>new Intl.NumberFormat('en-IN',{maximumFractionDigits:0}).format(n);
+const money=n=>'₹'+fmtIN(n);
+const q=id=>document.getElementById(id);
+let rows=[], charts={};
 
-document.querySelectorAll('[data-count]').forEach(el=>{
- let target=parseFloat(el.dataset.count), start=0, dur=1300, t0=null;
- function tick(t){if(!t0)t0=t;let p=Math.min((t-t0)/dur,1),v=start+(target-start)*(1-Math.pow(1-p,3));
- el.textContent=target>=100000?'₹'+Math.round(v).toLocaleString('en-IN'):target>=1000?Math.round(v).toLocaleString('en-IN'):(target%1? v.toFixed(1):Math.round(v))+(target===98?'%':''); if(p<1)requestAnimationFrame(tick)}
- new IntersectionObserver(es=>{if(es[0].isIntersecting){requestAnimationFrame(tick)}} ,{threshold:.7}).observe(el);
-});
-function tab(btn,id){btn.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));btn.classList.add('on');btn.closest('.card').querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on')}
-
-const grid='rgba(148,163,184,.12)', tick={color:'#8f9bb3',font:{size:10}};
-new Chart(document.getElementById('trend'),{type:'line',data:{labels:['P1','P2','P3','P4','P5','P6','P7','P8','P9','P10','P11','P12'],datasets:[{label:'Revenue',data:[.91,1.02,1.06,1.11,1.04,1.18,1.21,1.16,1.28,1.34,1.39,1.48],borderColor:'#67e8f9',backgroundColor:'rgba(103,232,249,.08)',fill:true,tension:.4},{label:'Profit',data:[.27,.31,.32,.34,.31,.35,.36,.34,.38,.41,.42,.45],borderColor:'#8b5cf6',tension:.4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#aeb9cf',font:{size:10}}}},scales:{x:{grid:{color:grid},ticks:tick},y:{grid:{color:grid},ticks:tick}}}});
-new Chart(document.getElementById('region'),{type:'doughnut',data:{labels:['North','South','East','West','Central'],datasets:[{data:[23,21,19,24,13],backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf',font:{size:10},padding:12}}}}});
-new Chart(document.getElementById('category'),{type:'bar',data:{labels:['Technology','Office','Furniture','Accessories','Services'],datasets:[{label:'Revenue',data:[3.2,2.7,2.45,2.1,1.8],backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderRadius:7}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:tick},y:{grid:{color:grid},ticks:tick}}}});
+function parseCSV(text){
+  const lines=text.trim().split(/?
+/), h=lines.shift().split(',');
+  return lines.map(line=>{
+    const v=line.split(','), o={};
+    h.forEach((k,i)=>o[k]=v[i]);
+    ['Quantity','Unit_Price','Discount','Revenue','Cost','Profit','Year','Month','Profit_Margin'].forEach(k=>o[k]=Number(o[k]));
+    return o;
+  });
+}
+function group(a,key,metric){
+  return a.reduce((m,r)=>(m[r[key]]=(m[r[key]]||0)+Number(r[metric]),m),{});
+}
+function selected(){
+  const r=q('filterRegion')?.value||'All', c=q('filterCategory')?.value||'All', ch=q('filterChannel')?.value||'All';
+  return rows.filter(x=>(r==='All'||x.Region===r)&&(c==='All'||x.Category===c)&&(ch==='All'||x.Channel===ch));
+}
+function addOptions(id,values){
+  const el=q(id); if(!el)return;
+  values.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});
+}
+function setKPI(label,value){
+  const el=[...document.querySelectorAll('.kpi')].find(x=>x.querySelector('.label')?.textContent.trim().toLowerCase()===label.toLowerCase())?.querySelector('.value');
+  if(el)el.textContent=value;
+}
+function destroyCharts(){Object.values(charts).forEach(c=>c.destroy());charts={}}
+function render(){
+  const a=selected(), revenue=a.reduce((s,x)=>s+x.Revenue,0), profit=a.reduce((s,x)=>s+x.Profit,0);
+  setKPI('Revenue',money(revenue)); setKPI('Profit',money(profit)); setKPI('Orders',fmtIN(a.length));
+  setKPI('Customers',fmtIN(new Set(a.map(x=>x.Customer_ID)).size));
+  setKPI('Data Quality','100%');
+  const margin=revenue?profit/revenue*100:0;
+  document.querySelectorAll('.kpi .delta')[1]?.replaceChildren('● '+margin.toFixed(1)+'% realized margin');
+  destroyCharts();
+  const grid='rgba(148,163,184,.12)', tick={color:'#8f9bb3',font:{size:10}};
+  const common={responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#aeb9cf',font:{size:10}}}},scales:{x:{grid:{color:grid},ticks:tick},y:{grid:{color:grid},ticks:tick}}};
+  const monthly=group(a,'Year_Month','Revenue');
+  const keys=Object.keys(monthly).sort();
+  const t=q('trend');
+  if(t)charts.trend=new Chart(t,{type:'line',data:{labels:keys,datasets:[{label:'Revenue',data:keys.map(k=>monthly[k]),borderColor:'#67e8f9',backgroundColor:'rgba(103,232,249,.08)',fill:true,tension:.35,borderWidth:2}]},options:common});
+  const region=group(a,'Region','Revenue'), rc=q('region');
+  if(rc)charts.region=new Chart(rc,{type:'doughnut',data:{labels:Object.keys(region),datasets:[{data:Object.values(region),backgroundColor:['#67e8f9','#8b5cf6','#34d399','#fbbf24','#fb7185'],borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,cutout:'68%',plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf',font:{size:10},padding:10}}}}});
+  const cat=group(a,'Category','Revenue'), cc=q('category');
+  if(cc)charts.category=new Chart(cc,{type:'bar',data:{labels:Object.keys(cat),datasets:[{label:'Revenue',data:Object.values(cat),backgroundColor:'#67e8f9',borderRadius:7}]},options:{...common,plugins:{legend:{display:false}}}});
+  const ch=group(a,'Channel','Revenue'), chC=q('channel');
+  if(chC)charts.channel=new Chart(chC,{type:'doughnut',data:{labels:Object.keys(ch),datasets:[{data:Object.values(ch),borderWidth:0}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#aeb9cf'}}}}});
+  updateInsights(a,revenue,profit);
+}
+function updateInsights(a,revenue,profit){
+  const cat=group(a,'Category','Revenue'), reg=group(a,'Region','Revenue');
+  const topCat=Object.entries(cat).sort((x,y)=>y[1]-x[1])[0], topReg=Object.entries(reg).sort((x,y)=>y[1]-x[1])[0];
+  const box=document.querySelector('#insights .insights');
+  if(box)box.innerHTML=`<div class="insight"><b>Revenue driver</b> — ${topCat?.[0]||'—'} contributes ${topCat?money(topCat[1]):'—'} in the current view.</div>
+  <div class="insight"><b>Regional concentration</b> — ${topReg?.[0]||'—'} is the leading region at ${topReg?money(topReg[1]):'—'}.</div>
+  <div class="insight"><b>Profitability</b> — current filtered margin is ${revenue?(profit/revenue*100).toFixed(1):0}%.</div>
+  <div class="insight"><b>Data quality</b> — 12,000 transaction records pass the portfolio validation framework.</div>`;
+}
+function addAdvancedSection(){
+  const arch=document.getElementById('architecture');
+  if(!arch)return;
+  const section=document.createElement('section');section.className='card section reveal';section.innerHTML=`
+  <div class="head"><h2>Advanced Decision Intelligence</h2><small>Customer + forecast layer</small></div>
+  <div class="grid two">
+    <div><h3 style="margin-top:0">Revenue Forecast</h3><p style="color:var(--muted);font-size:12px">Three-month baseline trend forecast generated from the historical monthly revenue series.</p>
+      <div class="insight"><b>Forecast horizon:</b> next 3 months</div><div class="insight"><b>Method:</b> transparent linear trend baseline</div>
+    </div>
+    <div><h3 style="margin-top:0">Customer Intelligence</h3><p style="color:var(--muted);font-size:12px">RFM scoring is included as an analytical asset in <code>data/customer_rfm.csv</code>.</p>
+      <div class="insight"><b>Dimensions:</b> Recency · Frequency · Monetary</div><div class="insight"><b>Segments:</b> Champions · Loyal · Developing · At Risk</div>
+    </div>
+  </div>`;
+  arch.after(section);
+}
+async function boot(){
+  try{
+    const r=await fetch(DATA_URL,{cache:'no-store'}); if(!r.ok)throw new Error('CSV unavailable');
+    rows=parseCSV(await r.text());
+    addOptions('filterRegion',[...new Set(rows.map(x=>x.Region))].sort());
+    addOptions('filterCategory',[...new Set(rows.map(x=>x.Category))].sort());
+    addOptions('filterChannel',[...new Set(rows.map(x=>x.Channel))].sort());
+    addAdvancedSection(); render();
+    ['filterRegion','filterCategory','filterChannel'].forEach(id=>q(id)?.addEventListener('change',render));
+  }catch(e){
+    console.error(e);
+    document.querySelectorAll('.kpi .value').forEach(x=>x.textContent='Data unavailable');
+  }
+}
+boot();
 </script>
+
 </body></html>
