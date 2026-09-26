@@ -1,0 +1,34 @@
+{
+  "revenue": 13207911.85,
+  "profit": 3965150.03,
+  "orders": 12000,
+  "customers": 6620,
+  "margin": 30.02,
+  "aov": 1100.66,
+  "rows": 12000,
+  "date_min": "2024-01-01",
+  "date_max": "2025-12-31",
+  "top_category": "Technology",
+  "top_region": "North",
+  "top_product": "Accessories",
+  "forecast": [
+    {
+      "Year_Month": "2026-01",
+      "Forecast_Revenue": 557806.28
+    },
+    {
+      "Year_Month": "2026-02",
+      "Forecast_Revenue": 558404.41
+    },
+    {
+      "Year_Month": "2026-03",
+      "Forecast_Revenue": 559002.54
+    }
+  ],
+  "segments": {
+    "At Risk": 952,
+    "Developing": 4150,
+    "Loyal": 4931,
+    "Champions": 1903
+  }
+}
